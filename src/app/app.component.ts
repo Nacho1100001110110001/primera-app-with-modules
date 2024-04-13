@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { allIcons } from 'ngx-bootstrap-icons';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'primera-app-with-modules';
+  title = 'El pepe SA';
 }

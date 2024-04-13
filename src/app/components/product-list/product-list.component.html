@@ -1,0 +1,78 @@
+<div class="row p-4">
+  <div class="col-md-2">Filtrar por:</div>
+  <div class="col-md-4">
+    <input type="text" />
+  </div>
+</div>
+<div class="row p-4 pt-0">
+  <div class="card border-primary text-center">
+    <div class="card-header">
+      <h3>Lista de Productos</h3>
+    </div>
+    <div class="card-body">
+      <div class="table.responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <button class="btn btn-primary" (click)="imageToggle()">
+                  @if(showImage){
+                  <i-bs name="eye-fill" width="25" height="25">
+                  </i-bs>
+                  Ocultar
+                  }@else{
+                  <i-bs name="eye-slash-fill" width="25" height="25">
+                  </i-bs>
+                  Mostrar
+                  }
+                  imagenes
+                </button>
+              </th>
+              <th>Producto</th>
+              <th>Código</th>
+              <th>Disponible</th>
+              <th>Precio</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if(products.length == 0){
+            <tr>
+              <td colspan="6">---</td>
+            </tr>
+            }@else{
+            @for(producto of products; track $index){
+            <tr style="text-align: center;">
+              <td>
+                @if(showImage){
+                @if(producto.imageSrc == null){
+                <img src="../../../assets/imgs/no-image.png" alt="No hay imagen" width="50">
+                }@else{
+                <img [src]="producto.imageSrc" alt="Imagen producto" width="50">
+                }
+                }@else{
+                ---
+                }
+              </td>
+              <td>{{producto.name}}</td>
+              <td>{{producto.code}}</td>
+              <td>{{producto.date | date:'dd-MM-yyyy'}}</td>
+              <td>{{producto.price | currency: 'EUR' : 'code'}}</td>
+              <td>
+                <i-bs [name]="rating(1, producto.rating)" width="20" height="20"></i-bs>
+                <i-bs [name]="rating(2, producto.rating)" width="20" height="20"></i-bs>
+                <i-bs [name]="rating(3, producto.rating)" width="20" height="20"></i-bs>
+                <i-bs [name]="rating(4, producto.rating)" width="20" height="20"></i-bs>
+                <i-bs [name]="rating(5, producto.rating)" width="20" height="20"></i-bs>
+              </td>
+            </tr>
+            }
+            }
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
